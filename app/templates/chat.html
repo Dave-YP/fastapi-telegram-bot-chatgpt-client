@@ -8,6 +8,7 @@
 </head>
 <body>
     <div class="container">
+        <button id="toggle-tabs-btn" class="toggle-tabs-btn">&#9650;</button> 
         <div class="tab-container" id="tab-container">
             {% for tab in tabs %}
             <button class="tab-btn" data-tab-id="{{ tab.id }}">
@@ -37,7 +38,11 @@
                 <textarea id="user-input" placeholder="Enter your message..." required></textarea>
                 <button type="submit" id="send-button" class="send-btn"></button>
             </form>                  
-            <div class="token-balance">Token balance: <span id="token-balance">{{ tokens_remaining }}</span></div>
+            <div class="token-balance-container">
+                <div class="token-balance-box">
+                    Token balance: <span id="token-balance">{{ tokens_remaining }}</span>
+                </div>
+            </div>
         </div>
     </div>
 

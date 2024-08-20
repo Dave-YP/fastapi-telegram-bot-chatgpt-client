@@ -7,6 +7,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     console.log('DOM loaded. Current Tab ID from localStorage:', currentTabId);
 
+    const toggleTabsBtn = document.getElementById('toggle-tabs-btn');
+    let tabsVisible = true;
+
+    toggleTabsBtn.addEventListener('click', () => {
+        if (tabsVisible) {
+            tabContainer.style.display = 'none';
+            toggleTabsBtn.innerHTML = '&#9660;';
+        } else {
+            tabContainer.style.display = 'flex';
+            toggleTabsBtn.innerHTML = '&#9650;';
+        }
+        tabsVisible = !tabsVisible;
+    });
+
     const buttonContainer = document.createElement('div');
     buttonContainer.classList.add('button-container');
     
