@@ -1,9 +1,11 @@
+/* Global Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Body Styling */
 body {
     font-family: 'Roboto', Arial, sans-serif;
     display: flex;
@@ -14,6 +16,7 @@ body {
     color: #c9d1d9;
 }
 
+/* Container Styles (General) */
 .container, .form-container {
     background-color: #161b22;
     border-radius: 10px;
@@ -22,6 +25,7 @@ body {
     padding: 30px;
 }
 
+/* Container Sizes */
 .container {
     width: 90%;
     max-width: 600px;
@@ -32,12 +36,14 @@ body {
     max-width: 400px;
 }
 
+/* Headings */
 h1 {
     text-align: center;
     color: #58a6ff;
     margin-bottom: 30px;
 }
 
+/* Button and Link Styles */
 button, .button-group a, input[type="submit"] {
     margin: 10px 0;
     padding: 12px 24px;
@@ -52,22 +58,26 @@ button, .button-group a, input[type="submit"] {
     text-decoration: none;
 }
 
+/* Button Hover Effects */
 button:hover, .button-group a:hover, input[type="submit"]:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Specific Button Styles */
 .logout-btn { background-color: #f85149; color: white; }
 .chat-btn { background-color: #238636; color: white; }
 .register-btn { background-color: #1f6feb; color: white; }
 .login-btn { background-color: #58a6ff; color: white; }
 
+/* Chat Container */
 .chat-container {
     display: flex;
     flex-direction: column;
     height: 80vh;
 }
 
+/* Chat Messages */
 .chat-messages {
     flex-grow: 1;
     overflow-y: auto;
@@ -77,6 +87,7 @@ button:hover, .button-group a:hover, input[type="submit"]:hover {
     position: relative;
 }
 
+/* Chat Scrollbar */
 .chat-messages::-webkit-scrollbar {
     width: 10px;
     border-radius: 5px;
@@ -96,6 +107,7 @@ button:hover, .button-group a:hover, input[type="submit"]:hover {
     background-color: #4c8ed9;
 }
 
+/* Chat Message Styles */
 .message {
     max-width: 70%;
     margin-bottom: 15px;
@@ -108,6 +120,7 @@ button:hover, .button-group a:hover, input[type="submit"]:hover {
     clear: both;
 }
 
+/* User Message Style */
 .user {
     background-color: #238636;
     color: #ffffff;
@@ -116,6 +129,7 @@ button:hover, .button-group a:hover, input[type="submit"]:hover {
     margin-left: auto;
 }
 
+/* Bot Message Style */
 .bot {
     background-color: #3e464f;
     color: #c9d1d9;
@@ -124,12 +138,14 @@ button:hover, .button-group a:hover, input[type="submit"]:hover {
     margin-right: auto;
 }
 
+/* Clear Floating */
 .message::after {
     content: "";
     display: table;
     clear: both;
 }
 
+/* Form Inputs and Labels */
 .form-container input[type="text"],
 .form-container input[type="password"] {
     width: 100%;
@@ -149,6 +165,7 @@ button:hover, .button-group a:hover, input[type="submit"]:hover {
     font-size: 14px;
 }
 
+/* Submit Button Style */
 .form-container input[type="submit"] {
     background-color: #238636;
     color: #ffffff;
@@ -159,6 +176,7 @@ button:hover, .button-group a:hover, input[type="submit"]:hover {
     background-color: #2ea043;
 }
 
+/* Notification Messages */
 .error {
     background-color: #f85149;
     color: #ffffff;
@@ -175,12 +193,14 @@ button:hover, .button-group a:hover, input[type="submit"]:hover {
     margin-bottom: 15px;
 }
 
+/* Button Container */
 .button-container {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+/* Button Group */
 .button-group {
     display: flex;
     justify-content: space-between;
@@ -193,6 +213,7 @@ button:hover, .button-group a:hover, input[type="submit"]:hover {
     padding: 10px 0;
 }
 
+/* Responsive Design */
 @media (max-width: 600px) {
     .container, .form-container {
         width: 100%;
@@ -204,25 +225,24 @@ button:hover, .button-group a:hover, input[type="submit"]:hover {
     .chat-container {
         height: 100vh;
     }
+
+    .chat-container .button-container {
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    .chat-container .button-container button {
+        width: 32%;
+    }
+
+    .chat-container .chat-btn {
+        margin-right: 0;
+    }
 }
 
-.chat-container .button-container {
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 20px;
-    margin-bottom: 10px;
-}
-
-.chat-container .button-container button {
-    width: 32%;
-}
-
-.chat-container .chat-btn {
-    margin-right: 0;
-}
-
-
-/* TABS */
+/* Tabs */
 .tab-container {
     display: flex;
     overflow-x: auto;
@@ -230,6 +250,7 @@ button:hover, .button-group a:hover, input[type="submit"]:hover {
     margin-bottom: 10px;
 }
 
+/* Tab Scrollbar */
 .tab-container::-webkit-scrollbar {
     height: 8px;
     border-radius: 5px;
@@ -249,6 +270,7 @@ button:hover, .button-group a:hover, input[type="submit"]:hover {
     background-color: #4c8ed9;
 }
 
+/* Tab Button Style */
 .tab-container .tab-btn {
     padding: 10px;
     margin-right: 5px;
@@ -270,7 +292,7 @@ button:hover, .button-group a:hover, input[type="submit"]:hover {
     text-overflow: ellipsis;
 }
 
-
+/* Tab Name Edit */
 .tab-btn .tab-name {
     flex-grow: 1;
     overflow: hidden;
@@ -279,11 +301,13 @@ button:hover, .button-group a:hover, input[type="submit"]:hover {
     pointer-events: none;
 }
 
+/* Active Tab Button */
 .tab-container .tab-btn.active {
     background-color: #0d1117;
     border: 1px solid #58a6ff;
 }
 
+/* Edit and Delete Icons */
 .tab-btn .tab-name-edit {
     flex-grow: 1;
     margin-right: 8px;
@@ -305,15 +329,15 @@ button:hover, .button-group a:hover, input[type="submit"]:hover {
     z-index: 2;
 }
 
-
+/* Icon Hover Effects */
 .tab-btn .edit-icon:hover,
 .tab-btn .delete-icon:hover {
     color: #ff7b72;
 }
 
+/* Other Styles */
 
-/* other styles */
-
+/* Responsive Logo */
 .responsive-logo {
     width: 100%;
     max-width: 100%;
@@ -322,6 +346,7 @@ button:hover, .button-group a:hover, input[type="submit"]:hover {
     margin: 0 auto;
 }
 
+/* User Info Box */
 .user-info-box {
     border: 2px solid #58a6ff;
     padding: 15px;
@@ -330,6 +355,7 @@ button:hover, .button-group a:hover, input[type="submit"]:hover {
     background-color: #0d1117;
 }
 
+/* Chat Buttons */
 .web-chat-btn {
     background-color: #9b59b6;
     color: white;
@@ -340,12 +366,13 @@ button:hover, .button-group a:hover, input[type="submit"]:hover {
     color: white;
 }
 
+/* Logout Container */
 .logout-container {
     margin-top: 20px;
     text-align: center;
 }
 
-
+/* Chat Form */
 .chat-form {
     display: flex;
     align-items: center;
@@ -357,6 +384,7 @@ button:hover, .button-group a:hover, input[type="submit"]:hover {
     outline: none;
 }
 
+/* User Input (Chat) */
 #user-input {
     flex-grow: 1;
     padding: 12px;
@@ -378,10 +406,12 @@ button:hover, .button-group a:hover, input[type="submit"]:hover {
     box-shadow: 0 0 0 2px #58a6ff;
 }
 
+/* Input Placeholder */
 #user-input::placeholder {
     color: #8b949e;
 }
 
+/* Send Button */
 .send-btn {
     width: 45px;
     height: 45px;
@@ -403,6 +433,7 @@ button:hover, .button-group a:hover, input[type="submit"]:hover {
     transform: translateY(-50%) scale(1.1);
 }
 
+/* Code and Preformatted Text */
 pre {
     background-color: #2d2d2d;
     color: #f8f8f2;
@@ -418,6 +449,7 @@ code {
     font-family: 'Courier New', Courier, monospace;
 }
 
+/* Responsive Images */
 .responsive-img {
     width: 100%;
     max-width: 600px;
@@ -426,6 +458,7 @@ code {
     margin: 0 auto;
 }
 
+/* Clear Button */
 .clear-btn {
     background-color: #3498DB;
     color: #ffffff;

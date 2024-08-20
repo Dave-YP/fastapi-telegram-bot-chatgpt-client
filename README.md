@@ -1,4 +1,4 @@
-# ChatGPT API Client using FastAPI with Web Interface and Telegram Bot Integration (lite version)
+# ChatGPT API Client using FastAPI with Web Interface and Telegram Bot Integration
 
 <img src="./app/static/img/main.png" alt="Project Screenshot" class="responsive-img">
 <img src="./app/static/img/chat.png" alt="Project Screenshot" class="responsive-img">
