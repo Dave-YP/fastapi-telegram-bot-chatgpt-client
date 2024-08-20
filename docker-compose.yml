@@ -1,0 +1,57 @@
+services:
+  redis:
+    image: "redis:latest"
+    container_name: "redis"
+    ports:
+      - "6379:6379"
+    networks:
+      - mynetwork
+
+  postgres:
+    image: "postgres:latest"
+    container_name: "postgres"
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: dbname
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user -d dbname"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    ports:
+      - "5432:5432"
+    networks:
+      - mynetwork
+
+  fastapi:
+    build:
+      context: .
+      dockerfile: Dockerfile.fastapi
+    container_name: "fastapi"
+    env_file:
+      - .env
+    ports:
+      - "5000:5000"
+    depends_on:
+      - redis
+      - postgres
+    networks:
+      - mynetwork
+
+  telegram-bot:
+    build:
+      context: .
+      dockerfile: Dockerfile.bot
+    container_name: "telegram-bot"
+    env_file:
+      - .env
+    environment:
+      - API_URL=http://fastapi:5000
+    depends_on:
+      - fastapi
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:

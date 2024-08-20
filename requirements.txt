@@ -1,0 +1,17 @@
+aiohttp
+fastapi
+openai
+pydantic[email]
+pydantic-settings
+python-dotenv
+python-telegram-bot
+redis
+uvicorn
+sqlalchemy
+jinja2
+passlib
+python-multipart
+python-jose
+aioredis
+asyncpg
+email-validator

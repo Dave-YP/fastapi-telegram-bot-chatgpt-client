@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with Bot</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="tab-container" id="tab-container">
+            {% for tab in tabs %}
+            <button class="tab-btn" data-tab-id="{{ tab.id }}">
+                <span class="tab-name">{{ tab.name }}</span>
+                <input type="text" class="tab-name-edit" value="{{ tab.name }}" style="display: none;" />
+                <span class="edit-icon">&#9998;</span>
+                <span class="delete-icon">&#128465;</span>
+            </button>
+            {% endfor %}
+        </div>        
+        <div class="chat-container">
+            {% for tab in tabs %}
+                <div id="chat-messages-{{ tab.id }}" class="chat-messages" style="display: none;">
+                    {% for message in tab.messages %}
+                        <div class="message {{ message.sender }}">
+                            {% if '```' in message.text %}
+                                {% set formatted_text = message.text.replace('```', '') %}
+                                <pre><code>{{ formatted_text | safe }}</code></pre>
+                            {% else %}
+                                <p>{{ message.text }}</p>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+            <form id="chat-form" class="chat-form">
+                <textarea id="user-input" placeholder="Enter your message..." required></textarea>
+                <button type="submit" id="send-button" class="send-btn"></button>
+            </form>                  
+            <div class="token-balance">Token balance: <span id="token-balance">{{ tokens_remaining }}</span></div>
+        </div>
+    </div>
+
+    <script src="/static/chat.js"></script>
+    
+    <script>
+        console.log('Tabs:', {{ tabs|tojson }});
+        console.log('First Tab ID:', {{ first_tab_id }});
+    </script>
+</body>
+</html>

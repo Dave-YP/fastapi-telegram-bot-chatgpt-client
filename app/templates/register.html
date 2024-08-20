@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Registration</h1>
+        <div id="message" class="message" style="display: none;"></div>
+        <form id="registerForm" method="post" action="/register/form">
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" required placeholder="Enter your email">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required placeholder="Create a password">
+            <input type="submit" value="Register" class="register-btn">
+        </form>
+        <div class="button-group">
+            <a href="/" class="chat-btn">Home</a>
+            <a href="/login" class="login-btn">Login</a>
+        </div>
+    </div>
+
+    <script>
+        function validateForm() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            if (!email.includes('@')) {
+                displayMessage('Invalid email format. Must contain @.', 'error');
+                return false;
+            }
+            
+            const atIndex = email.indexOf('@');
+            if (atIndex === email.length - 1) {
+                displayMessage('Invalid email format. There must be something after @.', 'error');
+                return false;
+            }
+            
+            const domainPart = email.substring(atIndex + 1);
+            if (!domainPart.includes('.')) {
+                displayMessage('Invalid email format. Domain part must contain a dot.', 'error');
+                return false;
+            }
+            
+            if (password.length < 6) {
+                displayMessage('Password must be at least 6 characters long.', 'error');
+                return false;
+            }
+            
+            return true;
+        }
+
+        function displayMessage(message, type) {
+            const messageElement = document.getElementById('message');
+            messageElement.textContent = message;
+            messageElement.className = `message ${type}`;
+            messageElement.style.display = 'block';
+        }
+    
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (validateForm()) {
+                fetch('/register/form', {
+                    method: 'POST',
+                    body: new FormData(this),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        displayMessage(data.error, 'error');
+                    } else if (data.success && data.redirect) {
+                        window.location.href = data.redirect;
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    displayMessage('An error occurred while submitting the form.', 'error');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
