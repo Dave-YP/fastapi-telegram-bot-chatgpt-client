@@ -113,7 +113,7 @@ button:hover, .button-group a:hover, input[type="submit"]:hover {
     color: #ffffff;
     text-align: left;
     border-radius: 20px 20px 0 20px;
-    margin-left: auto; /* Сдвигаем сообщение пользователя вправо */
+    margin-left: auto;
 }
 
 .bot {
@@ -387,7 +387,7 @@ button:hover, .button-group a:hover, input[type="submit"]:hover {
     height: 45px;
     border: none;
     background-color: transparent;
-    background-image: url('/static/arrow-icon.png');
+    background-image: url('/static/img/arrow-icon.png');
     background-size: 60%;
     background-repeat: no-repeat;
     background-position: center;
