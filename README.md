@@ -13,8 +13,7 @@
 
 ## Description
 
-This project is a FastAPI-powered client that connects with the OpenAI ChatGPT API, featuring both a web interface and a Telegram bot for seamless interaction.
-Users can register, log in, and chat with ChatGPT either through the web interface or the Telegram bot, while keeping their sessions authenticated.
+This project integrates the OpenAI ChatGPT API with a FastAPI-powered client, offering both a web interface and a Telegram bot for seamless interaction. Users can register, log in, and engage with ChatGPT through either the web interface or the Telegram bot, with session authentication maintained throughout.
 
 Key features include a token-based currency system, where users receive an initial allocation of tokens upon registration.
 These tokens are consumed based on the number of characters in both incoming and outgoing messages during conversations.
